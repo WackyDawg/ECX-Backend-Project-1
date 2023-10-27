@@ -152,6 +152,8 @@ POST /api
 
 ## To make GET request
 create a new Get request to http://localhost:3000/api/6502152763bcef1970ba0a28
+or this to http://localhost:3000/api/books to get all books that have been stored
+
 ```bash
 GET /api/:user_id
 ```
