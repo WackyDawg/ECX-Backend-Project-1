@@ -32,6 +32,18 @@ const createBook = async (req, res) => {
   }
 };
 
+const allBooks = async (req, res) =>{
+  try {
+    const books = await Book.find(); 
+
+    return res.status(200).json({
+      books: books,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
 const getBook = async (req, res) => {
   const bookId = req.params.bookID;
 
@@ -92,6 +104,7 @@ const deleteBook = async (req, res) => {
 
 module.exports = {
   createBook,
+  allBooks,
   getBook,
   updateBook,
   deleteBook,
