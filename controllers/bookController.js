@@ -33,10 +33,10 @@ const createBook = async (req, res) => {
 };
 
 const getBook = async (req, res) => {
-  const userId = req.params.bookID;
+  const bookId = req.params.bookID;
 
   try {
-    const book = await Book.findById(userId);
+    const book = await Book.findById(bookId);
 
     if (!book) {
       return res.status(404).json({ message: "Book not found" });
