@@ -130,7 +130,7 @@ Use Postman for testing the API. You can use any client :). So open postman and 
 
 ```bash
 {
-  "name": "Clark Kent"
+  "name": "Alice In Wonderland"
 }
 ```
 ![create user using POST](./images/create-user.png)
@@ -140,10 +140,10 @@ POST /api
 ## ❯ POST Request Response
 ```bash
 {
-    "message": "Person created successfully🎉",
-    "newPerson": {
+    "message": "Book created successfully🎉",
+    "newBook": {
         "_id": "6502152763bcef1970ba0a28",
-        "name": "Clark Kent",
+        "name": "Alice In Wonderland",
         "__v": 0
     }
 }
@@ -159,9 +159,9 @@ GET /api/:user_id
 ## ❯ GET Request Response
 ```bash
 {
-    "Person": {
+    "Book": {
         "_id": "6502152763bcef1970ba0a28",
-        "name": "Clark Kent",
+        "name": "Alice In Wonderland",
         "__v": 0
     }
 }
@@ -178,9 +178,9 @@ PUT /api/:user_id
 ```bash
 {
     "message": "Successfully Updated",
-    "updatedPerson": {
+    "updatedBook": {
         "_id": "64ff1ea91539022f0c4d1d98",
-        "name": "Julian Nwadinobi",
+        "name": "Peter-Pan",
         "__v": 0
     }
 }
@@ -195,7 +195,7 @@ DELETE /api/:user_id
 ## ❯ DELETE Request Response
 ```bash
 {
-    "message": "User has been deleted successfully!🗑️"
+    "message": "Book has been deleted successfully!🗑️"
 }
 ```
 ![divider](./images/divider.png)
@@ -205,12 +205,12 @@ DELETE /api/:user_id
 | Name                              | Description                                               |
 | --------------------------------- | --------------------------------------------------------- |
 | **.vscode/**                      | VSCode tasks, launch configuration, and other settings    |
-| **controllers/**                  | CRUD operations for managing user resources               |
+| **controllers/**                  | CRUD operations for managing books resources               |
 | **coverage**                      | Validation rules for request bodies and code coverage     |
-| **models**                        | Data models and response interfaces for user resources    |
+| **models**                        | Data models and response interfaces for books resources    |
 | **node_modules** *                | Custom type definitions and non-DefinitelyTyped files     |
-| **router/**                       | API routing for user-related endpoints                    |
-| **test/e2e/** *.test.js           | End-to-End tests for user creation and management         |
+| **router/**                       | API routing for books-related endpoints                    |
+| **test/e2e/** *.test.js           | End-to-End tests for book creation and management         |
 | .env.example                      | Example environment configuration settings                |
 | .env.test                         | Test environment configuration settings                   |
 | .gitignore                        | Ignore file for version control                           |
