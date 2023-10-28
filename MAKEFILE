@@ -1,17 +1,25 @@
-#!make
-MAKEFLAGS += --silent
-include .env
-export $(shell sed 's/=.*//' .env)
+APP_NAME = ECX-Backend-Project-1
+NODE = node
+NPM = npm
 
 build:
-		npm install
+	@echo "Building $(APP_NAME)..."
+	@$(NPM) install
+
+test:
+	@echo "Running Test For All $(APP_NAME) Api Endpoints..."
+	@$(NPM) test -- --exit
 
 run:
-		node index
+	@echo "Running $(APP_NAME)..."
+	@$(NODE) index.js
 
 clean:
-		npm cache clean
+	@echo "Cleaning up..."
+	@$(NPM) cache clean
 
-.PHONY: build
-.PHONY: run
-.PHONY: clean
+all: build test run clean
+
+.DEFAULT_GOAL := all
+
+.PHONY: build test run clean all
