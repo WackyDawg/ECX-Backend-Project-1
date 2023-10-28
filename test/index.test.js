@@ -10,7 +10,7 @@ describe("API Tests", () => {
   // Test POST /api to create a new book
   it("POST /api should create a new book", async () => {
     const newBook = {
-      name: "Alice In WonderLand",
+      name: "Alice In WonderLand v2",
     };
 
     const res = await request(app).post("/api").send(newBook);
@@ -25,7 +25,7 @@ describe("API Tests", () => {
   // Test POST /api to create a new book with existing name
   it("POST /api should create a new book with existing name", async () => {
     const existingBook = {
-      name: "Alice In WonderLand",
+      name: "Alice In WonderLand v2",
     };
 
     const res = await request(app).post("/api").send(existingBook);
@@ -33,37 +33,33 @@ describe("API Tests", () => {
     console.log("Response:", res.status, res.body);
     expect(res.status).to.equal(400);
     expect(res.body.message).to.equal(
-      'Book with name "Alice In WonderLand" already exists'
+      'Book with name "Alice In WonderLand v2" already exists'
     );
     //createdBookId = res.body.newBook._id;
   });
 
-  // Test POST /api to create a new book with Invalid Name type
-  it("POST /api should create a new book with Invalid Name type", async () => {
-    const invalidBook = {
-      name: "John Doe2",
-    };
-
-    const res = await request(app).post("/api").send(invalidBook);
-    console.log("Response:", res.status, res.body);
-    expect(res.status).to.equal(400);
-    expect(res.body.message).to.equal("Name must be a string");
-    //createdBookId = res.body.newBook._id;
-  });
-
   // Test GET /api/:bookID to retrieve the created book
-  it("GET /api/:bookID should retrieve the created book", async () => {
+  it("GET /api/:bookID should retrieve the book just created", async () => {
     const res = await request(app).get(`/api/${createdBookId}`);
     console.log("Response:", res.status, res.body);
     expect(res.status).to.equal(200);
     expect(res.body.book).to.have.property("_id");
-    expect(res.body.book.name).to.equal("John Doe");
+    expect(res.body.book.name).to.equal("Alice In WonderLand v2");
   });
 
+  it("GET /api/books should retrieve all books", async () => {
+    const res = await request(app).get("/api/books");
+    console.log("Response:", res.status, res.body);
+    expect(res.status).to.equal(200);
+    expect(res.body).to.be.an("object"); // Expect the response to be an object
+    // You can add more specific checks for the response data if needed
+  });
+  
+  
   // Test PUT /api/:bookID to update the created book
   it("PUT /api/:bookID should update the created book", async () => {
     const updatedBook = {
-      name: "Jane Smith",
+      name: "Harry Potter",
     };
 
     const res = await request(app)
@@ -78,7 +74,7 @@ describe("API Tests", () => {
     const getRes = await request(app).get(`/api/${createdBookId}`);
     console.log("Response:", res.status, res.body);
     expect(getRes.status).to.equal(200);
-    expect(getRes.body.book.name).to.equal("Jane Smith");
+    expect(getRes.body.book.name).to.equal("Harry Potter");
   });
 
   // Test DELETE /api/:bookID to delete the created book
