@@ -1,0 +1,17 @@
+#!make
+MAKEFLAGS += --silent
+include .env
+export $(shell sed 's/=.*//' .env)
+
+build:
+		npm install
+
+run:
+		node index
+
+clean:
+		npm cache clean
+
+.PHONY: build
+.PHONY: run
+.PHONY: clean
